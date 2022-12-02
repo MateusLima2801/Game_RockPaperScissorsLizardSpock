@@ -1,9 +1,9 @@
-package game;
+package  app.src.main.java.game;
 
 import java.util.ArrayList;
 import java.util.Random;
 import java.io.IOException;
-import java.util.random.*;
+import java.util.Random.*;
 
 public class Match {
     int idMatch; 
@@ -31,13 +31,12 @@ public class Match {
             executePlay();
         }
 
-        server.toggleServerClosure();
         return getWinner();
     }
 
     public ePiece choosePlay()
     {
-        Random geneRandom = new Random(1888);
+        Random geneRandom = new Random();
         int rand = geneRandom.nextInt(5);
         return ePiece.getByValue(rand);
     }
@@ -63,6 +62,7 @@ public class Match {
     {
         ePiece me = choosePlay();
         sendPlay(me);
+        server.waitMessage();
         ePiece them = receivePlay();
         myPlays.add(me);
         theirPlays.add(them);
@@ -90,7 +90,7 @@ public class Match {
             loser = me.getName();
         }
 
-        System.out.println(winner + " " + verb + " " + loser);
+        System.out.println(String.format("%s X %s: %s %s %s", me.getName(), them.getName(), winner, verb, loser));
     }
     public boolean isFinished()
     {

@@ -1,4 +1,4 @@
-package game;
+package  app.src.main.java.game;
 import java.io.IOException;
 
 public class AppThem {
@@ -11,7 +11,7 @@ public class AppThem {
             WSServer server = new WSServer(12346, 1);
             System.out.println("Servidor 'Them' concluido!");
             
-            Match match = new Match(5, 1, client, server);
+            Match match = new Match(1, 5, client, server);
             int res = match.playMatch();
         }
         catch(Exception e)

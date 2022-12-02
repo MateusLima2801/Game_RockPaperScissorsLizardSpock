@@ -1,4 +1,4 @@
-package game;
+package  app.src.main.java.game;
 
 import java.io.IOException;
 import java.io.PrintStream;

@@ -1,4 +1,4 @@
-package game;
+package  app.src.main.java.game;
 import java.lang.String;
 
 
@@ -7,6 +7,7 @@ public enum ePiece {
     STONE("PEDRA",2), LIZARD("LAGARTO",3),
     SPOCK("SPOCK",4);
 
+    
     private final String name;
     private final int value;
 
@@ -33,9 +34,11 @@ public enum ePiece {
 
     public static ePiece getByName(String name) throws Exception
     {
+        ePiece[] values = ePiece.values();
         for(int i = 0; i<5; i++)
         {
-            if(ePiece.values()[i].getName() == name)
+            String a = values[i].toString();
+            if(values[i].toString().contains(name))
             {
                 return ePiece.values()[i];
             }

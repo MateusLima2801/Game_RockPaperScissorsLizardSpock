@@ -1,4 +1,4 @@
-package game;
+package app.src.main.java.game;
 
 import org.json.simple.JSONObject;
 import java.io.FileWriter;
@@ -24,7 +24,7 @@ public class Message {
         JSONObject json = new JSONObject();
         json.put("idMatch", idMatch);
         json.put("turn", turn);
-        json.put("adversaryPlay", adversaryPlay.getName());
+        json.put("adversaryPlay", adversaryPlay.toString());
         return json;
     }
 

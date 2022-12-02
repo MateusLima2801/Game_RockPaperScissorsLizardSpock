@@ -1,4 +1,4 @@
-package game;
+package  app.src.main.java.game;
 
 import java.io.IOException;
 import java.io.Console;
@@ -15,7 +15,7 @@ public class App {
 
             WSClient client = new WSClient("127.0.0.1", 12346);
             System.out.println("Cliente 'Me' concluido!");
-            Match match = new Match(5, 1, client, server);
+            Match match = new Match(1, 5, client, server);
             int res = match.playMatch();
             String winner;
             if(res>0) winner = "Me";
@@ -29,6 +29,7 @@ public class App {
         }
         
     }
+
 }
 
 

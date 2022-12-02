@@ -1,4 +1,4 @@
-package game;
+package  app.src.main.java.game;
 
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -17,9 +17,8 @@ public class WSServer {
     DataInputStream dIn;
     ArrayList<Message> buffer = new ArrayList<Message>();
     int idMatch;
-    boolean canClose = false;
 
-    public WSServer(int port, int _idMatch) throws IOException {
+    public WSServer(int port, int _idMatch) throws Exception {
         server = new ServerSocket(port);
         client = server.accept();
         idMatch = _idMatch;
@@ -32,14 +31,8 @@ public class WSServer {
 
     public void waitMessage() throws Exception
     {
-        while(!canClose)
-        {
-            
-            // byte[] packetData = new byte[dIn.readString()];
-            // dIn.readFully(packetData);
-            readMessage(dIn.readUTF(););
-
-        }
+        String message = dIn.readUTF();
+        readMessage(message);
     }
 
     public void readMessage(String message) throws IOException, Exception
@@ -50,18 +43,13 @@ public class WSServer {
             int idMatch = (int) json.get("idMatch");
             int turn = (int) json.get("turn");
             ePiece adversaryPlay = ePiece.getByName(json.get("adversaryPlay").toString());
-            Message message = new Message(idMatch, turn, adversaryPlay);
-            buffer.add(message);
+            Message mess = new Message(idMatch, turn, adversaryPlay);
+            buffer.add(mess);
         } else throw new Exception("Wrong idMatch received");
     }
 
     public ePiece checkBuffer(int turn) throws InterruptedException, Exception
     {
-        while(buffer.isEmpty())
-        {
-            TimeUnit.MILLISECONDS.sleep(100);
-        }
-
         for (int i = 0; i< buffer.size(); i++) {
             if(buffer.get(i).turn == turn)
             {
@@ -72,11 +60,6 @@ public class WSServer {
         }
 
         throw new Exception("Some message was lost on the way");
-    }
-
-    public void toggleServerClosure()
-    {
-        canClose = true;
     }
     
     protected void finalize() throws IOException
