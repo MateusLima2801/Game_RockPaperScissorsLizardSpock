@@ -1,4 +1,4 @@
-package  app.src.main.java.game;
+package game;
 import java.lang.String;
 
 
@@ -37,7 +37,6 @@ public enum ePiece {
         ePiece[] values = ePiece.values();
         for(int i = 0; i<5; i++)
         {
-            String a = values[i].toString();
             if(values[i].toString().contains(name))
             {
                 return ePiece.values()[i];

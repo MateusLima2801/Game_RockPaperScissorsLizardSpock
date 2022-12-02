@@ -1,9 +1,8 @@
-package  app.src.main.java.game;
+package game;
 
 import java.util.ArrayList;
 import java.util.Random;
 import java.io.IOException;
-import java.util.Random.*;
 
 public class Match {
     int idMatch; 
@@ -12,11 +11,11 @@ public class Match {
     ArrayList<ePiece> myPlays = new ArrayList<ePiece>();
     ArrayList<ePiece> theirPlays = new ArrayList<ePiece>();
     ArrayList<Integer> results = new ArrayList<Integer>();
-    Board board = new Board();
-    WSClient client;
-    WSServer server;
+    static Board board = new Board();
+    SocketClient client;
+    SocketServer server;
 
-    public Match(int _idMatch, int _maxTurn, WSClient _client, WSServer _server)
+    public Match(int _idMatch, int _maxTurn, SocketClient _client, SocketServer _server)
     {
         idMatch = _idMatch;
         client = _client;
@@ -41,7 +40,7 @@ public class Match {
         return ePiece.getByValue(rand);
     }
 
-    public int comparePlay(ePiece me, ePiece them)
+    public static int comparePlay(ePiece me, ePiece them)
     {
         return board.comparePlay(me, them);
     }

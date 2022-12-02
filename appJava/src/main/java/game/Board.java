@@ -1,4 +1,4 @@
-package  app.src.main.java.game;
+package game;
 
 public class Board{
 

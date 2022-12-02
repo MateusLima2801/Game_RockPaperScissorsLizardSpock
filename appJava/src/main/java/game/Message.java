@@ -1,7 +1,6 @@
-package app.src.main.java.game;
+package game;
 
 import org.json.simple.JSONObject;
-import java.io.FileWriter;
 
 public class Message {
     int idMatch;
@@ -13,10 +12,6 @@ public class Message {
         idMatch = _idMatch;
         turn = _turn;
         adversaryPlay = _adversaryPlay;
-    }
-
-    public Message(JSONObject obj) {
-        
     }
     
     public JSONObject createJsonMessage()

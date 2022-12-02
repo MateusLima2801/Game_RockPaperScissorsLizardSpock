@@ -1,24 +1,22 @@
-package  app.src.main.java.game;
+package game;
 
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.lang.Exception;
-import javax.websocket.OnMessage;
-import java.util.concurrent.TimeUnit;
 
 import org.json.JSONObject;
 
 import java.io.DataInputStream;
-public class WSServer {
+public class SocketServer {
     ServerSocket server;
     Socket client;
     DataInputStream dIn;
     ArrayList<Message> buffer = new ArrayList<Message>();
     int idMatch;
 
-    public WSServer(int port, int _idMatch) throws Exception {
+    public SocketServer(int port, int _idMatch) throws Exception {
         server = new ServerSocket(port);
         client = server.accept();
         idMatch = _idMatch;

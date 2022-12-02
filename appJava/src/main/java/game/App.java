@@ -1,7 +1,4 @@
-package  app.src.main.java.game;
-
-import java.io.IOException;
-import java.io.Console;
+package game;
 import java.lang.String;
 
 public class App {
@@ -10,10 +7,10 @@ public class App {
         try
         {
             int idMatch = 1;
-            WSServer server = new WSServer(12345,1);
+            SocketServer server = new SocketServer(12345,1);
             System.out.println("Servidor 'Me' concluido!");
 
-            WSClient client = new WSClient("127.0.0.1", 12346);
+            SocketClient client = new SocketClient("127.0.0.1", 12346);
             System.out.println("Cliente 'Me' concluido!");
             Match match = new Match(1, 5, client, server);
             int res = match.playMatch();
@@ -22,6 +19,7 @@ public class App {
             else if(res==0) winner = "No one";
             else winner = "Them";
             System.out.println(winner + " has won the match " + idMatch);
+            
         }
         catch(Exception e)
         {
