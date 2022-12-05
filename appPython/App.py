@@ -1,20 +1,21 @@
-import SocketClient
-import SocketServer
-import Match
+from SocketClient import SocketClient
+from SocketServer import SocketServer
+from Match import Match
+from Message import Message
+import socket
+from Board import Board
+from ePiece import ePiece
 
 class App():
-    if __name__ == "__main__":
-        main()
-
     def main():
         try:
             idMatch = 1;
-            server = SocketServer(12345,1);
+            server = SocketServer(12002,idMatch);
             print("Servidor 'Me' concluido!");
-            client = SocketClient("127.0.0.1", 12346)
+            client = SocketClient("localhost", 12003)
             print("Cliente 'Me' concluido!")
 
-            match = Match(1, 5, client, server)
+            match = Match(1, 15, client, server)
             res: int = match.playMatch()
             winner = ""
             if res>0:
@@ -22,6 +23,10 @@ class App():
             elif res==0:
                 winner = "No one";
             else: winner = "Them";
-            print(winner + " has won the match " + idMatch);
+
+            print(winner + " has won the match " + str(idMatch))
         except Exception as e:
-            print("Error: " + e + "\n");
+            print("Error: " + str(e))
+
+    if __name__ == "__main__":
+        main()

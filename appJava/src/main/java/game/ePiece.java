@@ -17,7 +17,7 @@ public enum ePiece {
         value = _value;
     }
 
-    public String getName()
+    public String getScreenName()
     {
         return name;
     }

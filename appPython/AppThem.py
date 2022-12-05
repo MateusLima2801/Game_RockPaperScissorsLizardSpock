@@ -1,20 +1,22 @@
-import SocketClient
-import SocketServer
-import Match
+from SocketClient import SocketClient
+from SocketServer import SocketServer
+from Match import Match
 
 class AppThem():
-    if __name__ == "__main__":
-        main()
+
 
     def main():
         try:
             idMatch = 1;
-            client = SocketClient("127.0.0.1", 12345)
+            client = SocketClient("localhost", 12002)
             print("Cliente 'Them' concluido!\n")
-            server = SocketServer(12346, 1)
+            server = SocketServer(12003, idMatch)
             print("Servidor 'Them' concluido!\n")
 
-            match = Match(1, 5, client, server)
+            match = Match(1, 15, client, server)
             res: int = match.playMatch()
         except Exception as e:
-            print("Error: " + e + "\n");
+            print("Error: " + str(e));
+
+    if __name__ == "__main__":
+        main()

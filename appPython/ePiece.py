@@ -1,6 +1,8 @@
 from enum import Enum
 import string
 
+screenNames = ["TESOURA", "PAPEL", "PEDRA", "LAGARTO", "SPOCK"]
+
 class ePiece(Enum):
     SCISSORS = 0
     PAPER = 1
@@ -8,17 +10,16 @@ class ePiece(Enum):
     LIZARD = 3
     SPOCK = 4
 
-    names = ["TESOURA", "PAPEL", "PEDRA", "LAGARTO", "SPOCK"]
-
-    def getName(self):
-        return self.names[self.value]
     
-    def getValue(self):
+
+    def getScreenName(self) -> str:
+        return screenNames[self.value]
+    
+    def getValue(self) -> int:
         return self.value
 
-    def getByValue(self, value):
+    def getByValue(self, value: int) -> str:
         return self(value)
-    
-    #TODO: test if it works
-    def getByName(self, name):
-        return self[string.strip(name)]
+
+    def getByName(name: str):
+        return ePiece[name.strip()]

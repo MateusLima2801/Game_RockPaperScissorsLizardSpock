@@ -1,10 +1,11 @@
 from numpy import *
 
 class Board():
+    
     # a_{i, j} = 0 - withdraw
     # a_{i, j} = 1 - i wins from j
     # a_{i, j} = -1 - i loses for j
-    _adjacencyMatrix = [[0, 1, -1, 1, -1],
+    adjacencyMatrix = [[0, 1, -1, 1, -1],
                         [-1, 0, 1, -1, 1],
                         [1, -1, 0, 1, -1],
                         [-1, 1, -1, 0, 1],
@@ -17,11 +18,10 @@ class Board():
                 ["", "COME", "", "EMPATA COM", "ENVENENA"],
                 ["DERRETE", "", "VAPORIZA", "", "EMPATA COM"]]
 
-    def comparePlay(self,me, them):
+    def comparePlay(self,me, them) -> int:
         return self.adjacencyMatrix[me.getValue()][them.getValue()]
-    
 
-    def getVerb(self,winner,loser):
+    def getVerb(self,winner,loser) -> str:
         return self.playVerbs[winner.getValue()][loser.getValue()]
 
 

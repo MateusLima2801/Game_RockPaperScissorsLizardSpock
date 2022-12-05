@@ -5,9 +5,9 @@ public class AppThem {
     {
         try
         {
-            SocketClient client = new SocketClient("127.0.0.1", 12345);
+            SocketClient client = new SocketClient("localhost", 12002);
             System.out.println("Cliente 'Them' concluido!");
-            SocketServer server = new SocketServer(12346, 1);
+            SocketServer server = new SocketServer(12003, 1);
             System.out.println("Servidor 'Them' concluido!");
             
             Match match = new Match(1, 5, client, server);
@@ -15,7 +15,7 @@ public class AppThem {
         }
         catch(Exception e)
         {
-            System.out.println("Error: " + e);
+            System.out.println("Error: " + e.getMessage());
         }
     }
 }

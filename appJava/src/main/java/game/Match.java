@@ -36,7 +36,7 @@ public class Match {
     public ePiece choosePlay()
     {
         Random geneRandom = new Random();
-        int rand = geneRandom.nextInt(5);
+        int rand = 1+geneRandom.nextInt(4);
         return ePiece.getByValue(rand);
     }
 
@@ -79,17 +79,17 @@ public class Match {
         if(res >= 0 )
         {
             verb = board.getVerb(me, them);
-            winner = me.getName();
-            loser = them.getName();
+            winner = me.getScreenName();
+            loser = them.getScreenName();
         }
         else
         {
             verb = board.getVerb(them, me);
-            winner = them.getName();
-            loser = me.getName();
+            winner = them.getScreenName();
+            loser = me.getScreenName();
         }
 
-        System.out.println(String.format("%s X %s: %s %s %s", me.getName(), them.getName(), winner, verb, loser));
+        System.out.println(String.format("%s X %s: %s %s %s", me.getScreenName(), them.getScreenName(), winner, verb, loser));
     }
     public boolean isFinished()
     {
